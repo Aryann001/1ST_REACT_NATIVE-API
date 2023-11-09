@@ -6,9 +6,7 @@ import sendToken from "../utils/sendToken.js";
 import cloudinary from "cloudinary";
 
 export const register = catchAsyncError(async (req, res, next) => {
-  const { name, email, password } = req.body;
-
-  const { avatar } = req.files;
+  const { name, email, password, avatar } = req.body;
 
   let avatarData = {
     public_id: "Public_Id",
@@ -164,8 +162,7 @@ export const getMyProfile = catchAsyncError(async (req, res, next) => {
 });
 
 export const updateProfile = catchAsyncError(async (req, res, next) => {
-  const { name } = req.body;
-  const { avatar } = req.files;
+  const { name, avatar } = req.body;
 
   const user = await User.findById(req.user._id);
 
