@@ -17,7 +17,6 @@ app.use(cookieParser());
 app.use(fileUpload());
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URI],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
