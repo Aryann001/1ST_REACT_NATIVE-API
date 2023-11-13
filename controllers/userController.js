@@ -10,7 +10,7 @@ export const register = catchAsyncError(async (req, res, next) => {
 
   let avatarData = {
     public_id: "Public_Id",
-    url: "/Profile.png",
+    url: "./assets/Profile.png",
   };
 
   let user = await User.findOne({ email });
