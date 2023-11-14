@@ -90,8 +90,6 @@ export const logout = catchAsyncError(async (req, res, next) => {
     .cookie("userToken", null, {
       expires: new Date(Date.now()),
       httpOnly: true,
-      sameSite: process.env.NODE_ENV === "Production" ? "none" : "lax",
-      secure: process.env.NODE_ENV === "Production" ? true : false,
     })
     .json({
       success: true,
@@ -170,7 +168,7 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
     user.name = name;
   }
 
-  if (avatar) {
+  if (avatar !== undefined) {
     await cloudinary.v2.uploader.destroy(user.avatar.public_id);
 
     const result = await cloudinary.v2.uploader.upload(avatar, {
