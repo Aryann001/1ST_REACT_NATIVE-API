@@ -6,8 +6,6 @@ const sendToken = (res, user, statusCode) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
-    sameSite: process.env.NODE_ENV === "Production" ? "none" : "lax",
-    secure: process.env.NODE_ENV === "Production" ? true : false,
   };
 
   const userData = {
