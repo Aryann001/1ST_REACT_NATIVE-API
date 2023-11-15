@@ -207,7 +207,10 @@ export const updatePassword = catchAsyncError(async (req, res, next) => {
 
   await user.save();
 
-  sendToken(res, user, 200);
+  res.status(200).json({
+    success: true,
+    message: `Password Updated Successfully`,
+  });
 });
 
 export const forgotPassword = catchAsyncError(async (req, res, next) => {
