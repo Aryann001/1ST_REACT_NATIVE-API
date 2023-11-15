@@ -8,10 +8,7 @@ import cloudinary from "cloudinary";
 export const register = catchAsyncError(async (req, res, next) => {
   const { name, email, password, avatar } = req.body;
 
-  let avatarData = {
-    public_id: "Public_Id",
-    url: "./assets/Profile.png",
-  };
+  let avatarData = {};
 
   let user = await User.findOne({ email });
 
